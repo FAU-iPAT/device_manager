@@ -127,3 +127,52 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# generic patterns
+**/gitignore/
+**/.data/
+**/_data/
+**/data.*/
+**/.test/
+**/_test/
+
+# program specific patterns
+**/\.idea/
+
+*.m~
+*.asv
+
+*.sublime-project
+*.sublime-workspace
+
+**/\.ipynb_checkpoints/
+
+# Python sphinx documentation files
+**/docs/build/
+
+# MyPy caching directory
+**/.mypy_cache/
+
+# Tensorboard result directories
+**/tensorboard/*
+**/tensorboard*/*
+**/logs/*
+**/logs*/*
+
+# common data files
+*.gz
+*.zip
+*.h5
+*.npy
+*.mat
+*.pkl
+*.dat
+
+#graph files
+*.gexf
+
+# other
+\.DS_Store
+clean_git\.sh
+
+
