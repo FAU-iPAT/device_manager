@@ -1,7 +1,7 @@
 #! /opt/conda/bin/python3
 """ Singleton class to handle device pinning for tensorflow calculations """
 
-# Copyright 2019 FAU-iPAT (http://ipat.uni-erlangen.de/)
+# Copyright 2020 FAU-iPAT (http://ipat.uni-erlangen.de/)
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.

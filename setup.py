@@ -18,8 +18,6 @@
 
 from setuptools import setup
 
-# TODO (pi): check if pbr is useful
-
 version = {}
 with open("device_manager/version.py") as fp:
     exec(fp.read(), version)
