@@ -116,6 +116,8 @@ class DeviceManager:
         cls._device_list = cls._select_from_available(devices, available)
         cls._strategy = None
 
+        return cls
+
     @classmethod
     def gpu(cls, devices: _DeviceString = 'all') -> None:
         """
@@ -127,6 +129,8 @@ class DeviceManager:
         available: _DeviceList = tf.config.list_physical_devices('GPU')
         cls._device_list = cls._select_from_available(devices, available)
         cls._strategy = None
+
+        return cls
 
     @classmethod
     def _build_strategy(cls) -> None:
@@ -232,6 +236,80 @@ class DeviceManager:
         :param value: New value for dynamic growth
         """
         self.__class__._growth = value  # pylint: disable=protected-access
+
+    def use_cpu(self, foo: callable) -> callable:
+        """
+        device manager decorator cpu
+
+        :param foo: decorated function
+        :return: wrapper
+        """
+        def wrapper(*args, **kwargs):
+            self.cpu()
+            with self as device:
+                return foo(*args, **kwargs)
+
+        return wrapper
+
+    def use_gpu0(self, foo: callable) -> callable:
+        """
+        device manager decorator gpu 0
+
+        :param foo: decorated function
+        :return: wrapper
+        """
+
+        def wrapper(*args, **kwargs):
+            self.gpu(0)
+            with self as device:
+                return foo(*args, **kwargs)
+
+        return wrapper
+
+    def use_gpu1(self, foo: callable) -> callable:
+        """
+        device manager decorator gpu 1
+
+        :param foo: decorated function
+        :return: wrapper
+        """
+
+        def wrapper(*args, **kwargs):
+            self.gpu(1)
+            with self as device:
+                return foo(*args, **kwargs)
+
+        return wrapper
+
+    def use_gpu2(self, foo: callable) -> callable:
+        """
+        device manager decorator gpu 2
+
+        :param foo: decorated function
+        :return: wrapper
+        """
+
+        def wrapper(*args, **kwargs):
+            self.gpu(2)
+            with self as device:
+                return foo(*args, **kwargs)
+
+        return wrapper
+
+    def use_gpu3(self, foo: callable) -> callable:
+        """
+        device manager decorator gpu 3
+
+        :param foo: decorated function
+        :return: wrapper
+        """
+
+        def wrapper(*args, **kwargs):
+            self.gpu(3)
+            with self as device:
+                return foo(*args, **kwargs)
+
+        return wrapper
 
 
 device_manager: DeviceManager = DeviceManager()

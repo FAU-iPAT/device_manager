@@ -10,5 +10,6 @@ CHANGE LOG:
 
     - 0.1:
         implementing package
+        add decorators
 '''
 __version__ = '0.1'
